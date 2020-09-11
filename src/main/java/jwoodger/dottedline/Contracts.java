@@ -1,3 +1,5 @@
+// Copyright (C) 2020 Jack Woodger
+// SPDX-License-Identifier: MPL-2.0
 package jwoodger.dottedline;
 
 /**
