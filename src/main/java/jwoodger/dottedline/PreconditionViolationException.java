@@ -9,7 +9,7 @@ public class PreconditionViolationException extends RuntimeException {
 
     /**
      * Signals a precondition violation.
-     * @param message The detail message on the precondition.
+     * @param message The detail message illustrating the precondition.
      */
     public PreconditionViolationException(String message) {
         super(message);
