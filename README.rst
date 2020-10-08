@@ -60,3 +60,43 @@ You can also pass a message to ``requires``:
 .. code-block:: java
 
    requires(width > 0 && height > 0, "Width and height must be positive.");
+
+Postconditions with ``ensures``
+-------------------------------
+A postcondition expresses a contract that must be fulfilled by the callee of a
+method. Usually a postcondition signals a programming error, and thus the
+program should crash if it is not met.
+
+For example, a custom container class might contain a sorting algorithm. A good
+postcondition would, at the end of the sorting algorithm, check that the
+container was properly sorted. Like above, you can express this postcondition
+through documentation and the ``ensures`` method:
+
+.. code-block:: java
+
+   import static jwoodger.dottedline.Contracts.*;
+
+   public class Container {
+
+       // Checks that the container is properly sorted.
+       private boolean isSorted() {
+       }
+
+       /**
+        * Sorts this container.
+        */
+       public void sort() {
+           // sorting logic...
+
+           ensures(isSorted());
+       }
+   }
+
+If the container was not correctly sorted, ``ensures`` will throw a
+``PostconditionViolationException``.
+
+Just like with ``requires``, ``ensures`` can take a message parameter.
+
+.. code-block:: java
+
+   ensures(isSorted(), "The container is properly sorted.");
