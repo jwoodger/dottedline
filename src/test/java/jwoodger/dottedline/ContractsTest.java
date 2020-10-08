@@ -22,4 +22,16 @@ public class ContractsTest {
     public void requiresThrowsOnFailedCondition() {
         assertThrows(PreconditionViolationException.class, () -> requires(false));
     }
+
+    @DisplayName("ensures does not throw given a passed condition.")
+    @Test
+    public void ensuresDoesNotThrowOnSuccess() {
+        assertDoesNotThrow(() -> ensures(true));
+    }
+
+    @DisplayName("ensures throws a PostconditionViolationException given a failed condition.")
+    @Test
+    public void ensuresThrowsOnFailedCondition() {
+        assertThrows(PostconditionViolationException.class, () -> ensures(false));
+    }
 }
